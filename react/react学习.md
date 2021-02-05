@@ -162,3 +162,42 @@ class Weather extends React.Component {
 ReactDom.render(<Weather/>, document.getElementById("test"));
 ```
 
+
+
+#### 2.1.2 props
+
+```
+class Person extends React.Component{
+	
+    //对标签属性进行类型、必要性的限制
+    static propTypes = {
+        name:PropType.string.isRequired,
+        sex: PropType.string,
+        age: PropType.number
+    }
+
+    //指定默认标签属性值
+    static defaultProps = {
+        sex: '男'，
+        age:18
+    }
+
+	render() {
+		const {name, age, sex} = this.props;
+		return {
+			<ul>
+				<li>{name}</li>
+				<li>{age}</li>
+				<li>{sex}</li>
+			</ul>
+		}
+	}
+}
+
+ReactDom.render(<Person name="tom" age={18} sex="男"/>, document.getElementById('test'));
+
+const p = {name:'老刘', age:18, sex:'女'}；
+ReactDom.render(<Person {...p} />, document.getElementById('test2'))
+
+```
+
