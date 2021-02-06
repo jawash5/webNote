@@ -201,3 +201,26 @@ ReactDom.render(<Person {...p} />, document.getElementById('test2'))
 
 ```
 
+#### 2.1.3 refs
+
+```
+class Person extends React.Component{	
+	//React.createRef调用后可以返回一个容器，该容器可以存储被ref标识的节点,该容器专人专用
+	myRef = React.createRef();
+	showData = () => {
+		const {input1} = this;
+		alert(this.myRef.current.value);
+	}
+	render() {
+		return {
+			<div>
+				<input ref={this.myRef} type='text' />
+				<button onClick={this.showData}>点我提示左侧的数字</button>
+			</div>
+		}
+	}
+}
+
+ReactDom.render(<Person name="tom" age={18} sex="男"/>, document.getElementById('test'));
+```
+
